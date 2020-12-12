@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import routes from 'routes';
-import 'dotenv/config';
+import '../config';
 
 const app = express();
 
@@ -14,7 +14,7 @@ mongoose
     })
     .catch(error => console.error('MongoDB error:', error));
 
-app.use(cors);
+app.use((() => cors())()); // Typescript does not accept cors() as an argument. So, I did this
 
 app.use(express.json());
 

@@ -10,10 +10,3 @@ export const setEnvToTest = (): EnvOptions => {
 
     return OLD_ENV;
 };
-
-export const restoreEnv = (OLD_ENV: EnvOptions) => {
-    process.env = {
-        ...process.env,
-        NODE_ENV: OLD_ENV,
-    };
-};

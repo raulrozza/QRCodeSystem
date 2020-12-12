@@ -65,4 +65,10 @@ describe('Fetching product data', () => {
 
         expect(createdProducts).toContainEqual(alreadyCreatedProduct);
     });
+
+    it('should create both the user and product an return a response', async () => {
+        const response = await request(app).post('/user/discount').send();
+
+        expect(response.status).toBe(200);
+    });
 });

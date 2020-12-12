@@ -1,4 +1,6 @@
-import app from "./app";
-import 'dotenv/config'
+import app from './app';
+import 'dotenv/config';
 
-app.listen(process.env.PORT, () => console.log(`Server running at port ${process.env.PORT}`))
+app.listen(process.env.PORT, () =>
+    console.log(`Server running at port ${process.env.PORT}`),
+);

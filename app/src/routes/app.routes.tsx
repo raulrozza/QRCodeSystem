@@ -1,6 +1,9 @@
 import React from 'react';
+
+// Routing
 import { createStackNavigator } from '@react-navigation/stack';
 
+// Pages
 import Home from '../pages/Home';
 
 const App = createStackNavigator();

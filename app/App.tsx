@@ -1,8 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
 
+// Components
+import { StatusBar } from 'expo-status-bar';
+import { View } from 'react-native';
+
+// Routing
+import { NavigationContainer } from '@react-navigation/native';
 import { AppRoutes } from './src/routes';
 
 const App: React.FC = () => {

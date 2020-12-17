@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 // Pages
 import Home from '../pages/Home';
+import Scanned from '../pages/Scanned';
 
 const App = createStackNavigator();
 
@@ -17,6 +18,7 @@ const AppRoutes: React.FC = () => {
       }}
     >
       <App.Screen name="Home" component={Home} />
+      <App.Screen name="Scanned" component={Scanned} />
     </App.Navigator>
   );
 };

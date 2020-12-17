@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
 // Components
 import { Text, StyleSheet } from 'react-native';

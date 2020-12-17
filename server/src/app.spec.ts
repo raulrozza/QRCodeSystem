@@ -71,4 +71,30 @@ describe('Fetching product data', () => {
 
         expect(response.status).toBe(200);
     });
+
+    it('should return an error with an invalid product id', async () => {
+        const response = await request(app)
+            .post('/user/discount')
+            .send({
+                product: 'invalid product',
+            })
+            .expect(401);
+
+        const data = response.body as { error: string };
+
+        expect(data).toEqual({ error: 'Unknown product or user' });
+    });
+
+    it('should return an error with an invalid user id', async () => {
+        const response = await request(app)
+            .post('/user/discount')
+            .send({
+                user: 'invalid product',
+            })
+            .expect(401);
+
+        const data = response.body as { error: string };
+
+        expect(data).toEqual({ error: 'Unknown product or user' });
+    });
 });

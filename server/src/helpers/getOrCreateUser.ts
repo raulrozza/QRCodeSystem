@@ -8,14 +8,21 @@ const getRandomDiscount = () => {
     return discounts[discountIndex];
 };
 
-export default async function getOrCreateUser(_id: string): Promise<IUser> {
-    const existingUser = await User.findOne({ _id });
-    if (existingUser) return existingUser;
+export default async function getOrCreateUser(
+    _id: string,
+): Promise<IUser | null> {
+    try {
+        const existingUser = await User.findOne({ _id });
+        if (existingUser) return existingUser;
 
-    const newUser = await User.create({
-        username: faker.name.findName(),
-        discount: getRandomDiscount(),
-    });
+        const newUser = await User.create({
+            username: faker.name.findName(),
+            discount: getRandomDiscount(),
+        });
 
-    return newUser;
+        return newUser;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
 }

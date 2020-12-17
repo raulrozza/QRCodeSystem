@@ -9,6 +9,9 @@ export default {
         const storedUser = await getOrCreateUser(user);
         const storedProduct = await getOrCreateProduct(product);
 
+        if (!storedUser || !storedProduct)
+            return res.status(401).json({ error: 'Unknown product or user' });
+
         const priceWithDiscount =
             storedProduct.price - storedProduct.price * storedUser.discount;
 

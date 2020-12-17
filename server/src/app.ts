@@ -7,7 +7,7 @@ import '../config';
 const app = express();
 
 mongoose
-    .connect(process.env.MONGO_URL || '', {
+    .connect(String(process.env.MONGO_URL), {
         useUnifiedTopology: true,
         useNewUrlParser: true,
         useFindAndModify: false,

@@ -12,16 +12,18 @@ import api from '../../../services/api';
 interface Scanner {
   scanned: boolean;
   handleBarCodeScanned: BarCodeScannedCallback;
+  enableScan: () => void;
 }
 
 export default function useScanner(): Scanner {
   const [scanned, setScanned] = useState(false);
   const navigation = useNavigation();
 
+  const enableScan = useCallback(() => setScanned(false), []);
+
   const handleBarCodeScanned: BarCodeScannedCallback = useCallback(
     async ({ data }) => {
       setScanned(true);
-      alert(`QR code with data ${data} has been scanned!`);
 
       try {
         const response = await api.post<{ price: number }>('/user/discount', {
@@ -35,7 +37,7 @@ export default function useScanner(): Scanner {
         Alert.alert(
           'Error',
           'Oops, there was an error registering this product. Would you like to try again?',
-          [{ text: 'Yes', onPress: () => setScanned(false) }, { text: 'No' }],
+          [{ text: 'Yes', onPress: enableScan }, { text: 'No' }],
         );
       }
     },
@@ -45,5 +47,6 @@ export default function useScanner(): Scanner {
   return {
     scanned,
     handleBarCodeScanned,
+    enableScan,
   };
 }

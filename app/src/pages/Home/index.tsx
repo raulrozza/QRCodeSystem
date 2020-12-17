@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 // Components
 import { Text, StyleSheet } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import { Button } from '../../components';
 
 // Hooks
 import { useCameraPermission, useScanner } from './hooks';
@@ -12,7 +13,7 @@ import { Container } from './styles';
 
 const Home: React.FC = () => {
   const { hasCameraPermission } = useCameraPermission();
-  const { scanned, handleBarCodeScanned } = useScanner();
+  const { scanned, handleBarCodeScanned, enableScan } = useScanner();
 
   if (hasCameraPermission === null)
     return <Text> Requesting for camera permission </Text>;
@@ -26,6 +27,8 @@ const Home: React.FC = () => {
         barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
         style={StyleSheet.absoluteFillObject}
       />
+
+      {scanned && <Button onPress={enableScan}>{'Tap to Scan Again'}</Button>}
     </Container>
   );
 };

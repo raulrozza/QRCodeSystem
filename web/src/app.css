@@ -1,0 +1,29 @@
+.content {
+
+  height: 100vh;
+
+}
+
+html {
+  background-color: bisque;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 200px;
+  flex-direction: column;
+
+}
+
+.card p {
+  padding-top: 10px;
+  font-size: 16px;
+}

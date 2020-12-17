@@ -1,11 +1,9 @@
 .content {
-
   height: 100vh;
-
 }
 
 html {
-  background-color: bisque;
+  background: linear-gradient(60deg, #fc00ff 0%, #4A314D 50%, #fc00ff 100%);
 }
 
 .title {
